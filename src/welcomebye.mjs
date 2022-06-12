@@ -1,9 +1,19 @@
 import {argv} from 'process';
-import * as readline from 'readline';
+import * as path from "path";
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = dirname(__filename);
 
+export const goodbye = (name) => {
+    console.log(`Thank you for using File Manager, ${name}!`);
+    process.exit();
+}
+
+export let username = '';
+export let oneStepBack = path.join(process.cwd(),'../');
 
 export const welcomeBye = () => {
-    let username = '';
 
     const parseArgs = () => {
         const argsArr = argv.slice(2);
@@ -25,27 +35,8 @@ export const welcomeBye = () => {
 
         username = username.trim().replace(/\,$/, '');
         console.log(`Welcome to the File Manager, ${username}!`);
+        console.log(`You are currently in ${process.cwd()}`);
     };
-
-    const goodbye = (name) => {
-        console.log(`Thank you for using File Manager, ${name}!`);
-        process.exit();
-    }
-
-    const rl = readline.createInterface({
-        input: process.stdin
-    });
-
-    rl.on('line', async (input) => {
-        switch (input.trim()) {
-            case '.exit':
-                goodbye(username);
-                break;
-            default:
-                console.log('Invalid command! Enter ".exit" or press "ctrl + C" to exit');
-                break;
-        }
-    });
 
     try {
         parseArgs();
