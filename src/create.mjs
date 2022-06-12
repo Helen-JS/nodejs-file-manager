@@ -30,5 +30,6 @@ export const create = async () => {
         throw new Error('Operation failed');
     }
     await appendFile(newFilePath, fileContent);
+    console.log('File has been created!');
     console.log(`You are currently in ${process.cwd()}`);
 };

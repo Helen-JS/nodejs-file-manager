@@ -1,6 +1,7 @@
 import { rename as renameFile } from 'fs/promises';
 import { existsSync } from 'fs';
 import readline from "readline";
+import {fileCopyPath} from "../copy.mjs";
 
 export let wrongFilenamePath = '';
 export let properFilenamePath = '';
@@ -28,5 +29,6 @@ export const rename = async () => {
     }
 
     await renameFile(wrongFilenamePath, properFilenamePath);
+    console.log('File has been renamed!');
     console.log(`You are currently in ${process.cwd()}`);
 };

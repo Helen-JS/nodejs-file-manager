@@ -5,6 +5,7 @@ import { fileToRead, read } from "./src/read.mjs";
 //import { __dirname } from "./src/welcomebye.mjs";
 import { create, newFile } from "./src/create.mjs";
 import { wrongFilenamePath, properFilenamePath, rename } from "./src/rename.mjs";
+import { filePath, fileCopyPath, copy } from "./copy.mjs";
 
 welcomeBye();
 
@@ -20,7 +21,7 @@ rl.on('line', async (input) => {
         case 'up':
             console.log(`You are currently in ${oneStepBack}`);
             break;
-        case 'list':
+        case 'ls':
             list();
             break;
         case `cat ${fileToRead}`:
@@ -31,6 +32,9 @@ rl.on('line', async (input) => {
             break;
         case `rn ${wrongFilenamePath} ${properFilenamePath}`:
             rename();
+            break;
+        case `cp ${filePath} ${fileCopyPath}`:
+            copy();
             break;
         default:
             console.log('Invalid input!');
