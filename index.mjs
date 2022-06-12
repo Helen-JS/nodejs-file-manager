@@ -8,6 +8,7 @@ import { wrongFilenamePath, properFilenamePath, rename } from "./src/rename.mjs"
 import { filePath, fileCopyPath, copy } from "./copy.mjs";
 import { fileToBeDeletedPath, remove } from "./delete.mjs";
 import { fileHomePath, fileMovePath, move } from "./move.mjs";
+import { fileForHash, calculateHash} from "./hash.mjs";
 
 welcomeBye();
 
@@ -43,6 +44,9 @@ rl.on('line', async (input) => {
             break;
         case `mv ${fileHomePath} ${fileMovePath}`:
             move();
+            break;
+        case `hash ${fileForHash}`:
+            calculateHash();
             break;
         default:
             console.log('Invalid input!');
