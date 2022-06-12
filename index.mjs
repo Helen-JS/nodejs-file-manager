@@ -6,6 +6,8 @@ import { fileToRead, read } from "./src/read.mjs";
 import { create, newFile } from "./src/create.mjs";
 import { wrongFilenamePath, properFilenamePath, rename } from "./src/rename.mjs";
 import { filePath, fileCopyPath, copy } from "./copy.mjs";
+import { fileToBeDeletedPath, remove } from "./delete.mjs";
+import { fileHomePath, fileMovePath, move } from "./move.mjs";
 
 welcomeBye();
 
@@ -35,6 +37,12 @@ rl.on('line', async (input) => {
             break;
         case `cp ${filePath} ${fileCopyPath}`:
             copy();
+            break;
+        case `rm ${fileToBeDeletedPath}`:
+            remove();
+            break;
+        case `mv ${fileHomePath} ${fileMovePath}`:
+            move();
             break;
         default:
             console.log('Invalid input!');
