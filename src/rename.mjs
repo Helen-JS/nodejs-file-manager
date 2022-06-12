@@ -1,10 +1,9 @@
-import { appendFile } from 'fs/promises';
+import { rename as renameFile } from 'fs/promises';
 import { existsSync } from 'fs';
-import { __dirname } from "./welcomebye.mjs";
 import readline from "readline";
 
-export let newFile = '';
-let newFilePath = '';
+export let wrongFilenamePath = '';
+export let properFilenamePath = '';
 
 const rl = readline.createInterface({
     input: process.stdin
@@ -14,8 +13,8 @@ rl.on('line', async (input) => {
     switch (input.trim()) {
         case input.trim():
             let arr = input.split(/(\s+)/);
-            newFile = arr[2];
-            newFilePath = `${__dirname}${newFile}`;
+            wrongFilenamePath = arr[2];
+            properFilenamePath = arr[4];
             break;
         default:
             console.log('Invalid input!');
@@ -23,12 +22,11 @@ rl.on('line', async (input) => {
     }
 });
 
-const fileContent = 'A new file has been created';
-
-export const create = async () => {
-    if (existsSync(newFilePath)) {
+export const rename = async () => {
+    if (!existsSync(wrongFilenamePath) || existsSync(properFilenamePath)) {
         throw new Error('Operation failed');
     }
-    await appendFile(newFilePath, fileContent);
+
+    await renameFile(wrongFilenamePath, properFilenamePath);
     console.log(`You are currently in ${process.cwd()}`);
 };

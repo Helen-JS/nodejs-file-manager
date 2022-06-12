@@ -1,6 +1,6 @@
 import { readdir } from 'fs/promises';
 import { existsSync } from 'fs';
-import { __dirname } from "./welcomebye.mjs";
+//import { __dirname } from "./welcomebye.mjs";
 
 const folderPath = './files';
 

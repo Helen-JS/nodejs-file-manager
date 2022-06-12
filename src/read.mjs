@@ -1,6 +1,6 @@
 import {readFile} from 'fs/promises';
 import {existsSync} from 'fs';
-import {__dirname} from "./welcomebye.mjs";
+//import {__dirname} from "./welcomebye.mjs";
 import readline from "readline";
 
 export let fileToRead = '';
@@ -11,7 +11,8 @@ const rl = readline.createInterface({
 rl.on('line', async (input) => {
     switch (input.trim()) {
         case input.trim():
-            fileToRead = input.slice(4)
+            let arr = input.split(/(\s+)/);
+            fileToRead = arr[2];
             break;
         default:
             console.log('Invalid input!');

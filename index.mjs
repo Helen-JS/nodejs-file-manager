@@ -2,8 +2,9 @@ import { welcomeBye, goodbye, username, oneStepBack } from "./src/welcomebye.mjs
 import { list } from "./src/list.mjs";
 import readline from "readline";
 import { fileToRead, read } from "./src/read.mjs";
-import { __dirname } from "./src/welcomebye.mjs";
-import {create, newFile} from "./src/create.mjs";
+//import { __dirname } from "./src/welcomebye.mjs";
+import { create, newFile } from "./src/create.mjs";
+import { wrongFilenamePath, properFilenamePath, rename } from "./src/rename.mjs";
 
 welcomeBye();
 
@@ -27,6 +28,9 @@ rl.on('line', async (input) => {
             break;
         case `add ${newFile}`:
             create();
+            break;
+        case `rn ${wrongFilenamePath} ${properFilenamePath}`:
+            rename();
             break;
         default:
             console.log('Invalid input!');
